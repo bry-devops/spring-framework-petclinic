@@ -9,7 +9,13 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '091e12c6-e34d-4771-bc9f-4a51587a644c'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(b916e0d5-3358-492b-b756-7ea32791cc88)'
+    appType: 'webApp'
+    WebAppName: 
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
   # Web app name
   webAppName: 'bry-test-app'
